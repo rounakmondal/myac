@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do you wanna go on a chai date with me? 💕</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', sans-serif;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #333;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .container {
+            text-align: center;
+            z-index: 2;
+        }
+
+        img {
+            width: 150px;
+            margin: 20px 0;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 15px 40px;
+            font-size: 1.5em;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        #yesBtn {
+            background-color: #28a745;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        #yesBtn:hover {
+            background-color: #218838;
+            transform: scale(1.1);
+        }
+
+        #noBtn {
+            background-color: #dc3545;
+            color: white;
+            position: relative;
+            left: 0;
+            top: 0;
+            z-index: 1;
+        }
+
+        #noBtn:hover {
+            transform: scale(0.9);
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            opacity: 0.9;
+            animation: fall 3s linear infinite;
+            border-radius: 50%;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100vh); }
+        }
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: rgb(12, 4, 6);
+            border-radius: 50%;
+            transform: rotate(45deg);
+            animation: float 5s infinite;
+        }
+
+        .heart::before, .heart::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: pink;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -10px;
+            left: 0;
+        }
+
+        .heart::after {
+            left: 10px;
+            top: 0;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-100vh); }
+        }
+
+        .fireworks {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: yellow;
+            animation: explode 1.5s ease-out forwards;
+        }
+
+        @keyframes explode {
+            0% {
+                transform: scale(0.1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(5);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Do you wanna go on a chai date with me? </h1>
+      
+        <iframe src="https://giphy.com/embed/qNhXh8fjJEsne" width="280" height="250" style="border-radius: 25px; outline: none;" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+        <div class="button-container">
+            <button id="yesBtn">Yes </button>
+            <button id="noBtn">No 😒</button>
+        </div>
+    </div>
+
+    <script>
+const noBtn = document.getElementById('noBtn');
+const yesBtn = document.getElementById('yesBtn');
+const headlines = [
+    "Don't you miss our chai dates? ☕",
+    "I promise it'll be fun! 🌟",
+    "What if I bring your favorite chai? 🥤",
+    "You know you want to! 💕",
+    "Just say yes for the chai! 😊",
+    "Chai tastes better with you! 🍵",
+    "Please, just one chai date? 😩",
+    "It'll be a date to remember! 🥰",
+    "Chai is calling for us! 📞",
+    "Don't make me sad! 😢"
+];
+
+function waitForIframeLoad(iframe) {
+            return new Promise(resolve => {
+                iframe.onload = () => resolve(); 
+            });
+        }
+ noBtn.addEventListener('click', handleNoClick);
+
+ async function handleNoClick() {
+    const emojis = ["😔", "😢", "😭", "🥺", "😩", "😖", "😤", "😒", "😞", "😿"]; 
+const emojiSrc =['https://giphy.com/embed/bxraPiPlGqt4p0xten',
+                'https://giphy.com/embed/wfv1wVwt74kmI',
+                'https://giphy.com/embed/I1nwVpCaB4k36',
+                'https://giphy.com/embed/cEU7YYyYl77wc',
+                'https://giphy.com/embed/3oxHQfvDzo7VhSRy8M',
+                'https://giphy.com/embed/6fjlEABDn60yA',
+                'https://giphy.com/embed/ffzhLUixCtlsc',
+                'https://giphy.com/embed/IQwaRpQ5QB5ZK',
+                'https://giphy.com/embed/3o6Ztg33UhqFCMlM1G',
+                'https://giphy.com/embed/9QrNWBKvBpCw0'
+]
+            if (currentIndex < headlines.length) {
+                document.querySelector('h1').innerText = headlines[currentIndex];
+                document.querySelector('h1').innerHTML += ` ${emojis[currentIndex]}`;
+                document.querySelector('iframe').src = emojiSrc[currentIndex];
+                await waitForIframeLoad(document.querySelector('iframe'));
+                currentIndex++;
+            } else {
+                currentIndex = 0;
+                document.querySelector('h1').innerText = headlines[currentIndex];
+                document.querySelector('iframe').style.display = '';  
+            }
+        }
+
+
+let currentIndex = 0;
+yesBtn.addEventListener('click', function() {
+    document.body.style.animation = 'colorFlash 2s ease-in-out 3';
+    playCelebration();
+});
+
+const style = document.createElement('style');
+style.innerHTML = `
+    @keyframes colorFlash {
+        0% { background-color: #ff99cc; }
+        25% { background-color: #ffdd57; }
+        50% { background-color: #9b59b6; }
+        75% { background-color: #3498db; }
+        100% { background-color: #2ecc71; }
+    }
+`;
+document.head.appendChild(style);
+
+function playCelebration() {
+    for (let i = 0; i < 100; i++) {
+        createConfetti();
+    }
+    for (let i = 0; i < 20; i++) {
+        createHeart();
+    }
+    for (let i = 0; i < 10; i++) {
+        createFireworks();
+    }
+    playSound();
+}
+function createConfetti() {
+    const confetti = document.createElement('div');
+    confetti.classList.add('confetti');
+    document.body.appendChild(confetti);
+    const colors = ['#FF0D72', '#0DDFFD', '#FFFB0D', '#FF96F5', '#0DFF72'];
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    confetti.style.left = Math.random() * window.innerWidth + 'px';
+    confetti.style.backgroundColor = randomColor;
+    setTimeout(() => confetti.remove(), 3000);
+}
+
+function createHeart() {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    document.body.appendChild(heart);
+
+    heart.style.left = Math.random() * window.innerWidth + 'px';
+    heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+
+    setTimeout(() => heart.remove(), 5000);
+}
+
+function createFireworks() {
+    const fireworks = document.createElement('div');
+    fireworks.classList.add('fireworks');
+    document.body.appendChild(fireworks);
+
+    fireworks.style.left = Math.random() * window.innerWidth + 'px';
+    fireworks.style.top = Math.random() * window.innerHeight + 'px';
+
+    setTimeout(() => fireworks.remove(), 1500);
+}
+
+function playSound() {
+    const audio = new Audio('https://www.myinstants.com/media/sounds/tada.mp3');
+    audio.play();
+}
+    </script>
+</body>
+</html>
